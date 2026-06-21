@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --brand-orange: #E8680A;
+  --brand-navy: #1A2A4A;
+  --brand-orange-dark: #C4540A;
+  --brand-orange-light: #F5A65B;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #F4F5F7;
+  color: #1A2A4A;
+  min-height: 100dvh;
+  max-width: 430px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Safe area insets for PWA */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+/* Bottom nav height — screens need padding-bottom to not hide behind it */
+:root {
+  --bottom-nav-h: calc(64px + var(--safe-bottom));
+}
+
+/* ─── SCROLLBAR ─────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD2D9; border-radius: 4px; }
+
+/* ─── UTILITY CLASSES ───────────────────── */
+.page-scroll {
+  overflow-y: auto;
+  height: calc(100dvh - var(--bottom-nav-h));
+  padding-bottom: var(--space-4, 16px);
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(26,42,74,0.08);
+}
+
+.btn-primary {
+  background: var(--brand-orange);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 14px 20px;
+  width: 100%;
+  font-size: 15px;
+  transition: background 0.15s;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-primary:active { background: var(--brand-orange-dark); transform: scale(0.98); }
+.btn-primary:disabled { background: #CBD2D9; cursor: not-allowed; transform: none; }
+
+.btn-secondary {
+  background: #fff;
+  color: var(--brand-navy);
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 14px 20px;
+  width: 100%;
+  font-size: 15px;
+  border: 1.5px solid #E2E8F0;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-secondary:active { background: #F8FAFC; }
+
+.input-field {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+  color: #1A2A4A;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+}
+.input-field:focus { border-color: var(--brand-orange); }
+.input-field::placeholder { color: #A0AEC0; }
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4A5568;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* ─── STAT CARD ─────────────────────────── */
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(26,42,74,0.08);
+}
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1A2A4A;
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 12px;
+  color: #718096;
+  margin-top: 2px;
+}
+
+/* ─── BOTTOM NAV ─────────────────────────── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  height: var(--bottom-nav-h);
+  background: #fff;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 8px;
+  padding-bottom: var(--safe-bottom);
+  z-index: 100;
+  box-shadow: 0 -4px 16px rgba(26,42,74,0.06);
+}
+.bottom-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  color: #A0AEC0;
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color 0.15s;
+  font-size: 10px;
+  font-weight: 500;
+}
+.bottom-nav-item.active { color: var(--brand-orange); }
+.bottom-nav-item svg { stroke-width: 1.75; }
+
+/* ─── PAGE HEADER ────────────────────────── */
+.page-header {
+  background: var(--brand-navy);
+  color: #fff;
+  padding: 16px 16px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.page-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  flex: 1;
+}
+
+/* ─── TOAST ──────────────────────────────── */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: calc(100% - 32px);
+  max-width: 398px;
+  pointer-events: none;
+}
+.toast {
+  background: #1A2A4A;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: slide-down 0.2s ease;
+}
+.toast.success { background: #2D7D46; }
+.toast.error { background: #C53030; }
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── BADGE ──────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge-green { background: #C6F6D5; color: #2D7D46; }
+.badge-yellow { background: #FEFCBF; color: #975A16; }
+.badge-red { background: #FED7D7; color: #C53030; }
+.badge-blue { background: #BEE3F8; color: #2C5282; }
+.badge-gray { background: #EDF2F7; color: #4A5568; }
+
+/* ─── SELECT FIELD ───────────────────────── */
+select.input-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+/* ─── LOADING SPINNER ────────────────────── */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── DIVIDER ────────────────────────────── */
+.divider {
+  height: 1px;
+  background: #E2E8F0;
+  margin: 12px 0;
+}
+
+/* ─── LOW STOCK ALERT ────────────────────── */
+.alert-banner {
+  background: #FFF5F5;
+  border-left: 3px solid #E53E3E;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #C53030;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
