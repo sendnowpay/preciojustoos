@@ -67,6 +67,19 @@ export interface Sale {
   created_at: string;
 }
 
+export interface Transaction {
+  id: string;
+  user_id: string;
+  total_amount: number;
+  payment_method: PaymentMethod;
+  notes: string | null;
+  items_count: number;
+  receipt_sent: boolean;
+  customer_phone: string | null;
+  completed_at: string;
+  created_at: string;
+}
+
 export interface RepriceEvent {
   id: string;
   user_id: string;

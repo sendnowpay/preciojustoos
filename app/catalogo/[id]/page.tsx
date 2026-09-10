@@ -17,6 +17,7 @@ export default function EditProductPage() {
   const [product, setProduct] = useState<Product | null>(null);
   const [name, setName] = useState("");
   const [sku, setSku] = useState("");
+  const [barcode, setBarcode] = useState("");
   const [category, setCategory] = useState("");
   const [costPrice, setCostPrice] = useState("");
   const [salePrice, setSalePrice] = useState("");
@@ -33,6 +34,7 @@ export default function EditProductPage() {
       setProduct(data);
       setName(data.name);
       setSku(data.sku || "");
+      setBarcode(data.barcode || "");
       setCategory(data.category || "");
       setCostPrice(String(data.cost_price));
       setSalePrice(String(data.sale_price));
@@ -48,7 +50,7 @@ export default function EditProductPage() {
     setLoading(true);
     const supabase = createClient();
     await supabase.from("products").update({
-      name, sku: sku || null, category: category || null,
+      name, sku: sku || null, barcode: barcode || null, category: category || null,
       cost_price: parseFloat(costPrice || "0"),
       sale_price: parseFloat(salePrice || "0"),
       stock_quantity: parseInt(stockQty || "0"),
@@ -118,8 +120,12 @@ export default function EditProductPage() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               <div>
-                <label className="label">SKU</label>
+                <label className="label">SKU interno</label>
                 <input type="text" className="input-field" value={sku} onChange={(e) => setSku(e.target.value)} />
+              </div>
+              <div>
+                <label className="label">Código de barras</label>
+                <input type="text" className="input-field" value={barcode} onChange={(e) => setBarcode(e.target.value)} inputMode="numeric" placeholder="7790895000107" />
               </div>
               <div>
                 <label className="label">Categoría</label>

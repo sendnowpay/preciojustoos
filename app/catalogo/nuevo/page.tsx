@@ -8,6 +8,7 @@ export default function NuevoProductoPage() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [sku, setSku] = useState("");
+  const [barcode, setBarcode] = useState("");
   const [category, setCategory] = useState("");
   const [costPrice, setCostPrice] = useState("");
   const [salePrice, setSalePrice] = useState("");
@@ -34,6 +35,7 @@ export default function NuevoProductoPage() {
       user_id: user.id,
       name,
       sku: sku || null,
+      barcode: barcode || null,
       category: category || null,
       cost_price: parseFloat(costPrice || "0"),
       sale_price: parseFloat(salePrice),
@@ -69,10 +71,16 @@ export default function NuevoProductoPage() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               <div>
-                <label className="label">SKU / Código</label>
+                <label className="label">SKU / Código interno</label>
                 <input type="text" className="input-field" placeholder="COC-225" value={sku} onChange={(e) => setSku(e.target.value)} />
               </div>
               <div>
+                <label className="label">Código de barras</label>
+                <input type="text" className="input-field" placeholder="7790895000107" value={barcode} onChange={(e) => setBarcode(e.target.value)} inputMode="numeric" />
+              </div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+              <div style={{ gridColumn: "1 / -1" }}>
                 <label className="label">Categoría</label>
                 <input type="text" className="input-field" placeholder="Bebidas" value={category} onChange={(e) => setCategory(e.target.value)} />
               </div>
