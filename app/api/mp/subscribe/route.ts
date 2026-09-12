@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
 const PLAN_AMOUNTS: Record<string, number> = {
-  basico: 8900,
-  estandar: 19900,
-  pro: 38500,
+  basico: 12900,
+  estandar: 24900,
+  pro: 44900,
 };
 
 const PLAN_NAMES: Record<string, string> = {

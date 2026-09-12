@@ -7,9 +7,9 @@ import type { Profile } from "@/types/database";
 
 const PLAN_INFO = {
   free_trial: { label: "Prueba Gratuita", color: "#718096", bg: "#EDF2F7" },
-  basico: { label: "Básico • ARS 8.900/mes", color: "#2C5282", bg: "#BEE3F8" },
-  estandar: { label: "Estándar • ARS 19.900/mes", color: "#2D7D46", bg: "#C6F6D5" },
-  pro: { label: "Pro • ARS 38.500/mes", color: "#975A16", bg: "#FEFCBF" },
+  basico: { label: "Básico • ARS 12.900/mes", color: "#2C5282", bg: "#BEE3F8" },
+  estandar: { label: "Estándar • ARS 24.900/mes", color: "#2D7D46", bg: "#C6F6D5" },
+  pro: { label: "Pro • ARS 44.900/mes", color: "#975A16", bg: "#FEFCBF" },
 };
 
 const BUSINESS_TYPES = [

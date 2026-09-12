@@ -9,48 +9,54 @@ const PLANS = [
   {
     key: "basico",
     name: "Básico",
-    price: "ARS 8.900",
+    price: "ARS 12.900",
     period: "/mes",
+    badge: null,
+    tagline: "Para kioscos y almacenes",
     features: [
+      "POS carrito multi-producto",
+      "Escáner de código de barras",
+      "Recibo por WhatsApp",
       "Hasta 200 productos",
-      "Ventas ilimitadas",
-      "Repricing masivo",
+      "Repricing masivo (inflación)",
       "Historial 30 días",
-      "Importación CSV",
+      "Alertas de stock bajo",
     ],
     highlighted: false,
   },
   {
     key: "estandar",
     name: "Estándar",
-    price: "ARS 19.900",
+    price: "ARS 24.900",
     period: "/mes",
+    badge: "MÁS POPULAR",
+    tagline: "Para restaurantes y pet shops",
     features: [
+      "Todo lo de Básico",
       "Hasta 1.000 productos",
-      "Ventas ilimitadas",
-      "Repricing masivo",
+      "Cierre de caja diario (Z-report)",
       "Historial 90 días",
-      "Importación CSV",
+      "Importación CSV masiva",
       "Integración MP QR",
-      "Alertas de stock",
+      "Soporte por WhatsApp",
     ],
     highlighted: true,
   },
   {
     key: "pro",
     name: "Pro",
-    price: "ARS 38.500",
+    price: "ARS 44.900",
     period: "/mes",
+    badge: null,
+    tagline: "Para mercados y distribuidores",
     features: [
+      "Todo lo de Estándar",
       "Productos ilimitados",
-      "Ventas ilimitadas",
-      "Repricing masivo",
       "Historial completo",
-      "Importación CSV",
-      "Integración MP QR",
-      "Alertas de stock",
-      "Reportes PDF",
+      "Múltiples dispositivos",
+      "Reportes PDF exportables",
       "Soporte prioritario",
+      "Onboarding personalizado",
     ],
     highlighted: false,
   },
@@ -125,7 +131,7 @@ export default function SuscripcionPage() {
                 position: "relative",
               }}
             >
-              {plan.highlighted && (
+              {plan.badge && (
                 <div
                   style={{
                     position: "absolute",
@@ -138,15 +144,17 @@ export default function SuscripcionPage() {
                     borderRadius: 20,
                     fontSize: 11,
                     fontWeight: 700,
+                    whiteSpace: "nowrap",
                   }}
                 >
-                  MÁS POPULAR
+                  {plan.badge}
                 </div>
               )}
 
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
                 <div>
                   <h3 style={{ fontSize: 18, fontWeight: 700, color: "#1A2A4A" }}>{plan.name}</h3>
+                  <p style={{ fontSize: 11, color: "#718096", marginTop: 1, marginBottom: 4 }}>{plan.tagline}</p>
                   <p style={{ fontSize: 22, fontWeight: 800, color: "#E8680A", lineHeight: 1.2 }}>
                     {plan.price}
                     <span style={{ fontSize: 13, fontWeight: 500, color: "#718096" }}>
